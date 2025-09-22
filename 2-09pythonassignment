@@ -1,0 +1,48 @@
+class Student:
+    # Class Variable (shared by all objects)
+    school_name = "ABC International School"
+
+    def __init__(self, name, age):
+        # Instance Variables (unique to each object)
+        self.name = name
+        self.age = age
+
+    # Instance Method → works on object data
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}, School: {Student.school_name}")
+
+    # Class Method → works on class data
+    @classmethod
+    def change_school(cls, new_name):
+        cls.school_name = new_name
+
+    # Static Method → independent utility (doesn’t use class or object data)
+    @staticmethod
+    def is_adult(age):
+        return age >= 18
+
+    def show_local_variable(self):
+        # Local variable → exists only inside method
+        message = "This is a local variable"
+        print(message)
+
+
+# --- Object Creation ---
+s1 = Student("Alice", 17)
+s2 = Student("Bob", 20)
+
+# Instance method
+s1.display_info()
+s2.display_info()
+
+# Class method (changing class variable)
+Student.change_school("XYZ Public School")
+s1.display_info()
+s2.display_info()
+
+# Static method
+print("Is 20 adult?", Student.is_adult(20))
+print("Is 16 adult?", Student.is_adult(16))
+
+# Local variable demonstration
+s1.show_local_variable()
